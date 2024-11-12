@@ -16,6 +16,7 @@ interface LinearIssueType {
   Creator: string;
   Assignee: string;
   Labels: string;
+  "Due Date": string;
   "Cycle Number": string;
   "Cycle Name": string;
   "Cycle Start": string;
@@ -82,6 +83,7 @@ export class LinearCsvImporter implements Importer {
         completedAt: !!row.Completed ? new Date(row.Completed) : undefined,
         startedAt: !!row.Started ? new Date(row.Started) : undefined,
         estimate: safeParseInt(row.Estimate),
+        dueDate: row["Due Date"] ? new Date(row["Due Date"]) : undefined,
         labels,
       });
 
